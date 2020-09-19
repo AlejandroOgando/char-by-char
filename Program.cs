@@ -16,6 +16,10 @@ namespace char_by
                 {
                     Console.Write("\b \b");
                     name = name[0..^1];
+                }else if (key == ConsoleKey.Spacebar)
+                {
+                    Console.Write(keyInfo.KeyChar);
+                    name += keyInfo.KeyChar;
                 }
                 else if (char.IsLetter(keyInfo.KeyChar))
                 {
@@ -47,7 +51,6 @@ namespace char_by
             } while (key != ConsoleKey.Enter);
             return num;
         }
-        
         static float GetCoin ()
         {
             var num = string.Empty;
@@ -141,38 +144,25 @@ namespace char_by
                 {
                     case 1:
                         string name, lastName;
-                        Console.Write("Nombre ");
+                        Console.Write("Nombres: ");
                         name = GetNames();
                         Console.Write("\nApellidos: ");
                         lastName = GetNames();
-                        Console.WriteLine();
-                        Console.WriteLine();
-                        Console.WriteLine("{0} {1}", name,lastName);
                     break;
                     case 2:
-                        Read(filePath);
-                        Console.WriteLine("\nPresione cualquier tecla para volver al menú.");
-                        Console.ReadKey();
+                        string age;
+                        Console.Write("Escriba su edad: ");
+                        age = GetNumbers();
                     break;
                     case 3:
-                        string idFinder;
-                        Console.WriteLine("\nIntroduzca la cédula que desea buscar en el archivo");
-                        idFinder = Console.ReadLine();
-                        Console.WriteLine();
-                        Search(filePath, idFinder);
+                        float money;
+                        money = GetCoin();
                     break;
                     case 4:
-                        string idFinder1;
-                        Console.WriteLine("\nIntroduzca la cédula que desea borrar en el archivo");
-                        idFinder1 = Console.ReadLine();
-                        Console.WriteLine();
-                        Delete(filePath, idFinder1);
+                        Password();
                     break;
                     case 5:
-
-                    break;
-                    case 6:
-                        endProg++; 
+                        endProg++;
                     break;
                     default:
                     Console.WriteLine("No es una entrada válida.");
